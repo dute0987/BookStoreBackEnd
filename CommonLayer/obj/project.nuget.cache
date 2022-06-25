@@ -1,13 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "o+PzXrDwo50T+sGZZ0nAF4lJtuWdzCnrYBG/VyOxed5NU7UR14ViUUhN7vo7BAcj6+WYuwNtv47Xj2bW1qd5ug==",
+  "dgSpecHash": "9Ikw6LEcbi3NmL8JNHZT8teZINNzhfqW+kUb8lFd14+0P8zydPmeGuOr84/LHjRGzkjU+5pOgcARqjNc5N8b6Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\dute0\\BookStore\\CommonLayer\\CommonLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dute0\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.9\\microsoft.aspnet.mvc.5.2.9.nupkg.sha512",
     "C:\\Users\\dute0\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.9\\microsoft.aspnet.razor.3.2.9.nupkg.sha512",
     "C:\\Users\\dute0\\.nuget\\packages\\microsoft.aspnet.webpages\\3.2.9\\microsoft.aspnet.webpages.3.2.9.nupkg.sha512",
-    "C:\\Users\\dute0\\.nuget\\packages\\microsoft.web.infrastructure\\1.0.0\\microsoft.web.infrastructure.1.0.0.nupkg.sha512"
+    "C:\\Users\\dute0\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.1\\microsoft.aspnetcore.jsonpatch.3.1.1.nupkg.sha512",
+    "C:\\Users\\dute0\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.1\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.1.nupkg.sha512",
+    "C:\\Users\\dute0\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\dute0\\.nuget\\packages\\microsoft.web.infrastructure\\1.0.0\\microsoft.web.infrastructure.1.0.0.nupkg.sha512",
+    "C:\\Users\\dute0\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\dute0\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
   ],
   "logs": [
     {

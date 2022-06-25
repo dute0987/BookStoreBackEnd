@@ -27,7 +27,7 @@ namespace RepositoryLayer.Service
             {
                 using (sqlConnection)
                 {
-                    SqlCommand cmd = new SqlCommand("AddBook", sqlConnection);//strore procedure name
+                    SqlCommand cmd = new SqlCommand("AddBook", sqlConnection);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@BookName", book.BookName);
                     cmd.Parameters.AddWithValue("@authorName", book.AuthorName);

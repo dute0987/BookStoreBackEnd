@@ -54,3 +54,6 @@ C:\Users\dute0\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.csproj.Copy
 C:\Users\dute0\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.dll
 C:\Users\dute0\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.pdb
 C:\Users\dute0\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.genruntimeconfig.cache
+C:\Users\dute0\BookStore\BookStore\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\dute0\BookStore\BookStore\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\dute0\BookStore\BookStore\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

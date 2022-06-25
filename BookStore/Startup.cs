@@ -30,9 +30,14 @@ namespace BookStore
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize);
+
             services.AddControllers();
             services.AddTransient<IUserRL, UserRL>();
             services.AddTransient<IUserBL, UserBL>();
@@ -40,12 +45,23 @@ namespace BookStore
             services.AddTransient<IBookRL, BookRL>();
             services.AddTransient<IBookBL, BookBL>();
 
+            services.AddTransient<ICartRL, CartRL>();
+            services.AddTransient<ICartBL, CartBL>();
 
+            services.AddTransient<IWishListRL, WishListRL>();
+            services.AddTransient<IWishListBL, WishListBL>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                name: "AllowOrigin",
+              builder => {
+                  builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+              });
+            });
 
             services.AddSwaggerGen(setup =>
-            {
-                // Include 'SecurityScheme' to use JWT Authentication
+            {               
                 var jwtSecurityScheme = new OpenApiSecurityScheme
                 {
                     Scheme = "bearer",
@@ -69,33 +85,27 @@ namespace BookStore
                     { jwtSecurityScheme, Array.Empty<string>() }
                 });
             });
-                services.AddAuthentication(x =>
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
                 {
-                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                }).AddJwtBearer(x =>
-                {
-                    x.RequireHttpsMetadata = false;
-                    x.SaveToken = true;
-                    x.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("THIS_IS_MY_KEY_TO_GENERATE_TOKEN")),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("THIS_IS_MY_KEY_TO_GENERATE_TOKEN")),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
 
-                    };
-                });
-
-           
+                };
+            });         
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.)
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookStore");
@@ -111,6 +121,8 @@ namespace BookStore
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("AllowOrigin");
 
             app.UseEndpoints(endpoints =>
             {
