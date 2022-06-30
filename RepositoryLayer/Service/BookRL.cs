@@ -64,7 +64,7 @@ namespace RepositoryLayer.Service
             {
                 using (sqlConnection)
                 {
-                    SqlCommand cmd = new SqlCommand("UpdateBook", sqlConnection);//strore procedure name
+                    SqlCommand cmd = new SqlCommand("UpdateBook", sqlConnection);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@BookId", updatebook.BookId);
                     cmd.Parameters.AddWithValue("@BookName", updatebook.BookName);
@@ -203,8 +203,7 @@ namespace RepositoryLayer.Service
 
                             BookDetails = reader["BookDetails"].ToString(),
                             BookImage = reader["bookImage"].ToString(),
-                            Quantity = Convert.ToInt32(reader["Quantity"]),
-                            //BookCount = Convert.ToInt32(reader["BookCount"])
+                            Quantity = Convert.ToInt32(reader["Quantity"]),                      
                         });
                     }
 

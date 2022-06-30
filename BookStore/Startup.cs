@@ -42,6 +42,9 @@ namespace BookStore
             services.AddTransient<IUserRL, UserRL>();
             services.AddTransient<IUserBL, UserBL>();
 
+            services.AddTransient<IAdminRL, AdminRL>();
+            services.AddTransient<IAdminBL, AdminBL>();
+
             services.AddTransient<IBookRL, BookRL>();
             services.AddTransient<IBookBL, BookBL>();
 
@@ -50,6 +53,15 @@ namespace BookStore
 
             services.AddTransient<IWishListRL, WishListRL>();
             services.AddTransient<IWishListBL, WishListBL>();
+
+            services.AddTransient<IAddressRL, AddressRL>();
+            services.AddTransient<IAddressBL, AddressBL>();
+
+            services.AddTransient<IOrderRL, OrderRL>();
+            services.AddTransient<IOrderBL, OrderBL>();
+
+            services.AddTransient<IFeedbackRL, FeedbackRL>();
+            services.AddTransient<IFeedbackBL, FeedbackBL>();
 
             services.AddCors(options =>
             {

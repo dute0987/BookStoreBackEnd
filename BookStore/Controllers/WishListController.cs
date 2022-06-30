@@ -18,7 +18,7 @@ namespace BookStore.Controllers
             this.wishBL = wishBL;
         }
 
-        [Authorize]
+        [Authorize(Roles = Role.User)]
         [HttpPost("AddWishList")]
         public IActionResult AddWishList(WishListModel wishlistModel)
         {
@@ -41,7 +41,7 @@ namespace BookStore.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = Role.User)]
         [HttpDelete("DeleteWishList/{WishlistId}")]
         public IActionResult DeleteWishList(int WishlistId)
         {
@@ -60,7 +60,7 @@ namespace BookStore.Controllers
                 throw;
             }
         }
-        [Authorize]
+        [Authorize(Roles = Role.User)]
         [HttpPost("GetWishlistDetailsByUserid/{userId}")]
         public IActionResult GetWishlistDetailsByUserid()
         {
