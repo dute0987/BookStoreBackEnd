@@ -42,7 +42,7 @@ namespace BookStore.Controllers
         }
 
         [Authorize(Roles = Role.User)]
-        [HttpDelete("DeleteBook/{CartId}")]
+        [HttpDelete("DeleteCart/{CartId}")]
         public IActionResult RemoveFromCart(int CartId)
         {
             try

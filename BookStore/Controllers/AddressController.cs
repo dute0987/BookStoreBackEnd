@@ -85,5 +85,29 @@ namespace BookStore.Controllers
                 return this.BadRequest(new { Success = false, response = ex.Message });
             }
         }
+
+        [Authorize(Roles = Role.User)]
+        [HttpGet("GetAllAddresses")]
+        public IActionResult GetAllAddresses()
+        {
+            try
+            {
+                int userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
+                var cartdata = this.addressBL.GetAllAddresses(userId);
+                if (cartdata != null)
+                {
+                    return this.Ok(new { Success = true, message = "Address Detail Fetched Sucessfully", Response = cartdata });
+                }
+                else
+                {
+                    return this.BadRequest(new { Success = false, message = "Enter valid Inputs" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequest(new { Success = false, message = ex.Message });
+            }
+        }
     }
 }
+

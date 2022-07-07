@@ -118,5 +118,52 @@ namespace RepositoryLayer.Service
                 throw;
             }
         }
+
+        public List<AddressModel> GetAllAddresses(int userId)
+        {
+                try
+                {
+
+                    this.sqlConnection = new SqlConnection(this.configuration["ConnectionStrings:BookStore"]);
+                    SqlCommand cmd = new SqlCommand("GetAllAddresses", this.sqlConnection)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    using (sqlConnection)
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@UserId", userId);
+                        sqlConnection.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            List<AddressModel> addressmodel = new List<AddressModel>();
+                            while (reader.Read())
+                            {
+
+                                AddressModel addressModel = new AddressModel();
+                                addressModel.AddressId = Convert.ToInt32(reader["AddressId"]);
+                                addressModel.TypeId = Convert.ToInt32(reader["TypeId"]);
+                                addressModel.Address = reader["Address"].ToString();
+                                addressModel.City = reader["City"].ToString();
+                                addressModel.State = reader["State"].ToString();
+                                userId = Convert.ToInt32(reader["UserId"]);
+                                addressmodel.Add(addressModel);
+                            }
+                            sqlConnection.Close();
+                            return addressmodel;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            
+        }
     }
 }

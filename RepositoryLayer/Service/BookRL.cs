@@ -144,6 +144,7 @@ namespace RepositoryLayer.Service
                 {
                     while (reader.Read())
                     {
+                        bookModel.BookId = Convert.ToInt32(reader["BookId"]);
                         bookModel.BookName = reader["BookName"].ToString();
                         bookModel.AuthorName = reader["AuthorName"].ToString();
                         bookModel.Rating = reader["Rating"].ToString();

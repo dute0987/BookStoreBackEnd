@@ -40,6 +40,18 @@ namespace BusinessLayer.Service
             }
         }
 
+        public List<AddressModel> GetAllAddresses(int userId)
+        {
+            try
+            {
+                return this.addressRL.GetAllAddresses(userId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public AddressModel UpdateAddress(AddressModel addressModel, int userId)
         {
             try

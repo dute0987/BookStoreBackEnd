@@ -6,7 +6,7 @@ using System;
 
 namespace BookStore.Controllers
 {
-    [ApiController]  // Handle the Client error, Bind the Incoming data with parameters using more attribute
+    [ApiController]
     [Route("[controller]")]
     public class BookController:ControllerBase
     {
